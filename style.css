@@ -1,0 +1,24 @@
+/* Estilo base (complementar ao Tailwind, se quiser customizar algo) */
+
+.select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    background: white;
+  }
+  
+  .btn {
+    width: 100%;
+    background-color: #16a34a; /* verde */
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn:hover {
+    background-color: #15803d;
+  }
+  
