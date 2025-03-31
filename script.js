@@ -67,25 +67,50 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
     mostrarModal(resultado, imagem);
   });
   
+  // function mostrarModal(texto, imagemUrl) {
+  //   document.getElementById('modal-texto').textContent = texto;
+  //   document.getElementById('modal-imagem').src = imagemUrl;
+  //   document.getElementById('resultado-modal').classList.remove('hidden');
+  // }
   function mostrarModal(texto, imagemUrl) {
+    const modal = document.getElementById('resultado-modal');
+    modal.classList.remove('hidden');
+    modal.style.display = 'flex'; // força aparecer
     document.getElementById('modal-texto').textContent = texto;
     document.getElementById('modal-imagem').src = imagemUrl;
-    document.getElementById('resultado-modal').style.display = 'flex';
   }
   
+
+  
+  //function fecharModal() {
+ //   document.getElementById('resultado-modal').classList.add('hidden');
+  //}
   function fecharModal() {
-    document.getElementById('resultado-modal').style.display = 'none';
+    console.log("fecharModal chamado");
+  
+    const modal = document.getElementById("resultado-modal");
+    modal.classList.add("hidden");
+    modal.style.display = "none"; // força desaparecer
   }
-  
-  // Clique no fundo fecha
-  document.getElementById('resultado-modal').addEventListener('click', fecharModal);
-  
-  
-  // Clique no botão OK fecha e impede propagação
-  document.getElementById('fechar-btn').addEventListener('click', function (e) {
-    e.stopPropagation(); // evita que o clique propague para o fundo
-    fecharModal();       // fecha o modal
+
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById('resultado-modal');
+    const fecharBtn = document.getElementById('fechar-btn');
+    const modalContent = document.getElementById('modal-content');
+
+    modal.addEventListener('click', fecharModal);
+    
+    fecharBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      fecharModal();
+    });
+
+    modalContent.addEventListener('click', function (e) {
+      e.stopPropagation();
+      fecharModal();
+    });
   });
-  
   
   
