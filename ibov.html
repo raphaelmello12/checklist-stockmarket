@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checklist de Operações IBOV </title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4">
+  <div class="max-w-xl mx-auto bg-gray-200 shadow-xl rounded-2xl p-6 border-4 border-gray-700">
+    <h1 class="text-2xl font-bold mb-4 text-center">Checklist de Operações IBOV<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" alt="Bandeira do Brasil" class="inline-block w-6 h-6 ml-2"></h1>
+    <a href="index.html" class="inline-block mb-4 bg-gray-300 hover:bg-gray-400 text-black px-4 py-2 rounded-md">
+      ⬅️ Voltar
+    </a>
+    
+    <form id="checklist-form" class="space-y-2">
+
+      <!-- 1. Tendência -->
+      <div class="bg-gradient-to-r from-gray-400 to-gray-100 p-3 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border-2 border-gray-500 space-y-1">
+        <p class="font-semibold mb-2 text-center">1. Tendência do mercado:</p>
+        <div class="flex justify-center gap-6">
+        <label class="inline-flex items-center">
+          <input type="radio" name="tendencia" value="sim" class="form-radio" />
+          <span class="ml-2">Alta</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="tendencia" value="nao" class="form-radio" />
+          <span class="ml-2">Queda</span>
+        </label>
+      </div>
+    </div>
+
+      <div class="bg-gradient-to-r from-gray-400 to-gray-100 p-3 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border-2 border-gray-500 space-y-1">
+        <p class="font-semibold mb-2 text-center">2. Preço está próximo da máxima/mínima do dia?</p>
+        <div class="flex justify-center gap-6">
+        <label class="inline-flex items-center">
+          <input type="radio" name="amplitude" value="sim" class="form-radio" />
+          <span class="ml-2">Sim</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="amplitude" value="nao" class="form-radio" />
+          <span class="ml-2">Não</span>
+        </label>
+      </div>
+    </div>
+
+      <!-- 3. Média -->
+      <div class="bg-gradient-to-r from-gray-400 to-gray-100 p-3 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border-2 border-gray-500 space-y-1">
+        <p class="font-semibold mb-2 text-center">3. Preço atual está na média dos últimos pregões?</p>
+        <div class="flex justify-center gap-6">
+        <label class="inline-flex items-center mr-4">
+          <input type="radio" name="media" value="sim" class="form-radio" />
+          <span class="ml-2">Sim</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="media" value="nao" class="form-radio" />
+          <span class="ml-2">Não</span>
+        </label>
+      </div>
+    </div>
+
+      <!-- 4. Stop Loss vs Alvo -->
+      <div class="bg-gradient-to-r from-gray-400 to-gray-100 p-3 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border-2 border-gray-500 space-y-1">
+        <p class="font-semibold mb-2 text-center">4. Stop Loss menor que alvo de ganho?</p>
+        <div class="flex justify-center gap-6">
+        <label class="inline-flex items-center mr-4">
+          <input type="radio" name="risk" value="sim" class="form-radio" />
+          <span class="ml-2">Sim</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="risk" value="nao" class="form-radio" />
+          <span class="ml-2">Não</span>
+        </label>
+      </div>
+      </div>
+
+      <!-- 5. Dashboard -->
+      <div class="bg-gradient-to-r from-gray-400 to-gray-100 p-3 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border-2 border-gray-500 space-y-1">
+        <p class="font-semibold mb-2 text-center">5. Dashboard com no mínimo 7 critérios a favor?</p>
+        <div class="flex justify-center gap-6">
+        <label class="inline-flex items-center mr-4">
+          <input type="radio" name="dashboard" value="positivo" class="form-radio" />
+          <span class="ml-2">Sim</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="dashboard" value="negativo" class="form-radio" />
+          <span class="ml-2">Não</span>
+        </label>
+      </div>
+    </div>
+
+      <!-- 6. Probabilidade maior -->
+      <div class="bg-gradient-to-r from-gray-400 to-gray-100 p-3 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border-2 border-gray-500 space-y-1">
+        <p class="font-semibold mb-2 text-center">6. Probabilidade maior na:</p>
+        <div class="flex justify-center gap-6">
+        <label class="inline-flex items-center mr-4">
+          <input type="radio" name="probabilidade" value="positivo" class="form-radio text-green-600" />
+          <span class="ml-2">Compra</span>
+        </label>
+        <label class="inline-flex items-center mr-4">
+          <input type="radio" name="probabilidade" value="negativo" class="form-radio text-red-600" />
+          <span class="ml-2">Venda</span>
+        </label>
+      </div>
+    </div>
+
+      <!-- 7. Fluxo estrangeiro -->
+      <div class="bg-gradient-to-r from-gray-400 to-gray-100 p-3 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border-2 border-gray-500 space-y-1">
+        <p class="font-semibold mb-2 text-center">7. Fluxo estrangeiro favorecendo:</p>
+        <div class="flex justify-center gap-6">
+        <label class="inline-flex items-center mr-4">
+          <input type="radio" name="fluxo" value="positivo" class="form-radio text-green-600" />
+          <span class="ml-2">Compra</span>
+        </label>
+        <label class="inline-flex items-center mr-4">
+          <input type="radio" name="fluxo" value="negativo" class="form-radio text-red-600" />
+          <span class="ml-2">Venda</span>
+        </label>
+      </div>
+    </div>
+
+      <!-- 8. Juros futuros -->
+      <div class="bg-gradient-to-r from-gray-400 to-gray-100 p-3 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border-2 border-gray-500 space-y-1">
+        <p class="font-semibold mb-2 text-center">8. Juros futuros indo para:</p>
+        <div class="flex justify-center gap-6">
+        <label class="inline-flex items-center mr-4">
+          <input type="radio" name="juros" value="negativo" class="form-radio text-red-600" />
+          <span class="ml-2">Positivo</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="juros" value="positivo" class="form-radio text-green-600" />
+          <span class="ml-2">Negativo</span>
+        </label>
+      </div>
+    </div>
+
+      <!-- 9. Quant Index -->
+      <div class="bg-gradient-to-r from-gray-400 to-gray-100 p-3 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border-2 border-gray-500 space-y-1">
+        <p class="font-semibold mb-2 text-center">9. Tendência e Quant Index oscilando:</p>
+        <div class="flex justify-center gap-6">
+        <label class="inline-flex items-center mr-4">
+          <input type="radio" name="quant" value="positivo" class="form-radio" />
+          <span class="ml-2">Positivo</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="quant" value="negativo" class="form-radio" />
+          <span class="ml-2">Negativo</span>
+        </label>
+      </div>
+    </div>
+
+      <!-- 10. Força nas ações -->
+      <div class="bg-gradient-to-r from-gray-400 to-gray-100 p-3 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border-2 border-gray-500 space-y-1">
+        <p class="font-semibold mb-2 text-center">10. Ações com força maior em:</p>
+        <div class="flex justify-center gap-6">
+        <label class="inline-flex items-center mr-4">
+          <input type="radio" name="forca" value="positivo" class="form-radio text-green-600" />
+          <span class="ml-2">Compra</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="forca" value="negativo" class="form-radio text-red-600" />
+          <span class="ml-2">Venda</span>
+        </label>
+      </div>
+    </div>
+
+      <!-- 11. Top 10 IBOV -->
+      <div class="bg-gradient-to-r from-gray-400 to-gray-100 p-3 rounded-xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border-2 border-gray-500 space-y-1">
+        <p class="font-semibold mb-2 text-center">11. Top 10 IBOV oscilando para:</p>
+        <div class="flex justify-center gap-6">
+        <label class="inline-flex items-center mr-4">
+          <input type="radio" name="ibov" value="positivo" class="form-radio text-green-600" />
+          <span class="ml-2">Positivo</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="ibov" value="negativo" class="form-radio text-red-600" />
+          <span class="ml-2">Negativo</span>
+        </label>
+      </div>
+    </div>
+
+      <button type="submit" class="w-full bg-green-600 text-white font-semibold py-2 rounded hover:bg-green-700">
+        Analisar
+      </button>
+    </form>
+
+  </div>
+
+  <div id="resultado-modal" class="hidden inset-0 bg-black bg-opacity-50 items-center justify-center z-50 fixed">
+    <div id="modal-content" class="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
+      <img id="modal-imagem" src="" alt="Resultado" class="w-24 h-24 mx-auto mb-4" />
+      <p id="modal-texto" class="text-lg font-semibold mb-4"></p>
+      <button type="button" id="fechar-btn" class="btn text-lg">OK</button>
+    </div>
+  </div>
+  
+  
+  <script src="ibov-script.js"></script>
+</body>
+</html>
+
