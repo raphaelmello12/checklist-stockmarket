@@ -61,7 +61,7 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
     let pontos = 0;
   
     const criterios = [
-      { id: 'media',         tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
+      { id: 'media',         tipo: 'positivo' },
       { id: 'fluxo',         tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
       { id: 'juros',         tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
     ];

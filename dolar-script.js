@@ -52,7 +52,7 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
     let pontos = 0;
   
     const criterios = [
-      { id: 'media',         tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
+      { id: 'media',         tipo: 'positivo' },
       { id: 'fluxo',         tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
       { id: 'juros',         tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
     ];
@@ -80,8 +80,8 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
         : "⚠️ CAUTELA! Probabilidade de VENDA, mas nem todos os indicadores estão alinhados.";
     
       imagem = tipoOperacao === 'compra'
-        ? "https://cdn-icons-png.flaticon.com/128/190/190411.png"
-        : "https://cdn-icons-png.flaticon.com/128/1828/1828884.png";
+      ? "https://cdn-icons-png.flaticon.com/128/10893/10893970.png"
+      : "https://cdn-icons-png.flaticon.com/128/10893/10893978.png";
     }  else {
       resultado = "🟡 Não fazer nenhuma operação (poucos critérios favoráveis)";
       imagem = "https://cdn-icons-png.flaticon.com/128/10100/10100000.png";
