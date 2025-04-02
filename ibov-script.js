@@ -45,7 +45,10 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
       const risk = getValue('risk');
       const dashboard = getValue('dashboard');
       
-  
+    
+      let resultado = '';
+      let imagem = '';
+      let cautela = false;
 
     if (amplitude === 'sim' || risk === 'nao' || probBloqueado || forcaBloqueado || ibovBloqueado || quantBloqueado || dashboard === 'nao') {
       mostrarModal(
@@ -54,6 +57,7 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
       );
       return;
     }
+
     let pontos = 0;
   
     const criterios = [
@@ -65,13 +69,13 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
     criterios.forEach(c => {
       if (getValue(c.id) === c.tipo) {
         pontos++;
+      } else {
+        cautela = true; // Se algum critério não estiver alinhado, ativa a cautela
       }
     });
+
   
-    let resultado = '';
-    let imagem = '';
-  
-    if (pontos >= 3 && !cautela) {
+    if (pontos >= 1 && !cautela) {
       resultado = tipoOperacao === 'compra'
         ? "✅ Probabilidade maior de COMPRA"
         : "✅ Probabilidade maior de VENDA";

@@ -18,44 +18,54 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
 
     const tipoOperacao = tendencia === 'sim' ? 'compra' : 'venda';
     const quant = getValue('quant');
-    
+    const probabilidade = getValue('probabilidade');
+
 
     const quantBloqueado = (
       (tipoOperacao === 'compra' && quant === 'negativo') ||
       (tipoOperacao === 'venda' && quant === 'positivo')
     );
+    const probBloqueado = (
+      (tipoOperacao === 'compra' && probabilidade === 'negativo') ||
+      (tipoOperacao === 'venda' && probabilidade === 'positivo')
+    );
   
       // Etapas bloqueadoras
       const amplitude = getValue('amplitude');
-      const media = getValue('media');
       const risk = getValue('risk');
       const dashboard = getValue('dashboard');
+      
+    
+      let resultado = '';
+      let imagem = '';
+      let cautela = false;
 
-    if (amplitude === 'sim' || media === 'sim' || risk === 'nao' || quantBloqueado || dashboard === 'nao') {
+    if (amplitude === 'sim' || risk === 'nao' || probBloqueado || quantBloqueado || dashboard === 'nao') {
       mostrarModal(
-        "🔴 Não fazer nenhuma operação (condição crítica não atendida)",
-        "https://cdn-icons-png.flaticon.com/128/10100/10100000.png"
+        resultado = "🟡 Não fazer nenhuma operação (poucos critérios favoráveis)",
+        imagem = "https://cdn-icons-png.flaticon.com/128/10100/10100000.png"
       );
       return;
     }
-    let pontos = 1;
+
+    let pontos = 0;
   
     const criterios = [
-      { id: 'probabilidade', tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
-      { id: 'fluxo',         tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
-      { id: 'juros',         tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
+      { id: 'media',         tipo: tipoOperacao === 'compra' ? 'negativo' : 'positivo' },
+      { id: 'fluxo',         tipo: tipoOperacao === 'compra' ? 'negativo' : 'positivo' },
+      { id: 'juros',         tipo: tipoOperacao === 'compra' ? 'negativo' : 'positivo' },
     ];
   
     criterios.forEach(c => {
       if (getValue(c.id) === c.tipo) {
         pontos++;
+      } else {
+        cautela = true; // Se algum critério não estiver alinhado, ativa a cautela
       }
     });
+
   
-    let resultado = '';
-    let imagem = '';
-  
-    if (pontos >= 4) {
+    if (pontos <= 1 && cautela) {
       resultado = tipoOperacao === 'compra'
         ? "✅ Probabilidade maior de COMPRA"
         : "✅ Probabilidade maior de VENDA";
@@ -63,7 +73,15 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
       imagem = tipoOperacao === 'compra'
         ? "https://cdn-icons-png.flaticon.com/128/10893/10893970.png"
         : "https://cdn-icons-png.flaticon.com/128/10893/10893978.png";
-    } else {
+    }  else if (cautela) {
+      resultado = tipoOperacao === 'compra'
+        ? "⚠️ CAUTELA! Probabilidade de COMPRA, mas nem todos os indicadores estão alinhados."
+        : "⚠️ CAUTELA! Probabilidade de VENDA, mas nem todos os indicadores estão alinhados.";
+    
+      imagem = tipoOperacao === 'compra'
+        ? "https://cdn-icons-png.flaticon.com/128/190/190411.png"
+        : "https://cdn-icons-png.flaticon.com/128/1828/1828884.png";
+    }  else {
       resultado = "🟡 Não fazer nenhuma operação (poucos critérios favoráveis)";
       imagem = "https://cdn-icons-png.flaticon.com/128/10100/10100000.png";
     }
