@@ -29,6 +29,7 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
       (tipoOperacao === 'compra' && probabilidade === 'negativo') ||
       (tipoOperacao === 'venda' && probabilidade === 'positivo')
     );
+
   
       // Etapas bloqueadoras
       const amplitude = getValue('amplitude');
@@ -51,9 +52,9 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
     let pontos = 0;
   
     const criterios = [
-      { id: 'media',         tipo: tipoOperacao === 'compra' ? 'negativo' : 'positivo' },
-      { id: 'fluxo',         tipo: tipoOperacao === 'compra' ? 'negativo' : 'positivo' },
-      { id: 'juros',         tipo: tipoOperacao === 'compra' ? 'negativo' : 'positivo' },
+      { id: 'media',         tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
+      { id: 'fluxo',         tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
+      { id: 'juros',         tipo: tipoOperacao === 'compra' ? 'positivo' : 'negativo' },
     ];
   
     criterios.forEach(c => {
@@ -65,7 +66,7 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
     });
 
   
-    if (pontos <= 1 && cautela) {
+    if (pontos >= 1 && !cautela) {
       resultado = tipoOperacao === 'compra'
         ? "✅ Probabilidade maior de COMPRA"
         : "✅ Probabilidade maior de VENDA";
