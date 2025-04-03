@@ -6,15 +6,24 @@ document.getElementById('checklist-form').addEventListener('submit', function (e
     return selected ? selected.value : '';
   };
 
-  // Tendência base: alta (compra) ou queda (venda)
-  const tendencia = getValue('tendencia');
-  if (tendencia !== 'sim' && tendencia !== 'nao') {
-    mostrarModal(
-      "⚠️ Selecione a tendência para continuar.",
-      "https://cdn-icons-png.flaticon.com/128/8622/8622353.png"
-    );
-    return;
+  // Campos obrigatórios a serem verificados
+  const camposObrigatorios = [
+    'tendencia', 'amplitude', 'quant', 'risk', 'dashboard', 
+    'probabilidade', 'fluxo', 'juros', 'media'
+  ];
+
+  // Verificar se algum campo obrigatório não foi preenchido
+  for (let i = 0; i < camposObrigatorios.length; i++) {
+    const valor = getValue(camposObrigatorios[i]);
+    if (!valor) {
+      mostrarModal(
+        "⚠️ Por favor, selecione todas as opções para continuar.",
+        "https://cdn-icons-png.flaticon.com/128/8622/8622353.png"
+      );
+      return;
+    }
   }
+    const tendencia = getValue('tendencia');
 
     const tipoOperacao = tendencia === 'sim' ? 'compra' : 'venda';
     const quant = getValue('quant');
